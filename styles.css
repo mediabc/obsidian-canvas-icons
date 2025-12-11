@@ -239,7 +239,6 @@
 /* Узлы с иконками БЕЗ цвета - убираем фон и border */
 .canvas-node:has(.canvas-icon-container):not([class*="mod-canvas-color"]) .canvas-node-container {
 	background: transparent !important;
-	border: none !important;
 	box-shadow: none !important;
 }
 

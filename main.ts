@@ -464,18 +464,33 @@ class IconPickerModal extends Modal {
 				}
 			} else {
 				// Режим создания - добавляем новый узел
-				let posX = this.x ?? this.canvas.x;
-				let posY = this.y ?? this.canvas.y;
+				let posX = 0;
+				let posY = 0;
 
-				// Если позиция не задана, используем центр видимой области
-				if (this.x === undefined || this.y === undefined) {
+				// Если позиция задана явно, используем её
+				if (this.x !== undefined && this.y !== undefined) {
+					posX = this.x;
+					posY = this.y;
+				} else {
+					// Иначе вычисляем центр видимой области
 					const canvasView = this.plugin.getActiveCanvasView();
 					if (canvasView) {
 						const rect = canvasView.contentEl.getBoundingClientRect();
-						posX = (-this.canvas.tx + rect.width / 2) / this.canvas.tZoom - this.selectedSize / 2;
-						posY = (-this.canvas.ty + rect.height / 2) / this.canvas.tZoom - this.selectedSize / 2;
+						const tx = this.canvas.tx ?? 0;
+						const ty = this.canvas.ty ?? 0;
+						const zoom = this.canvas.tZoom ?? 1;
+						
+						// Проверяем на NaN и используем безопасные значения
+						if (isFinite(tx) && isFinite(ty) && isFinite(zoom) && zoom !== 0) {
+							posX = (-tx + rect.width / 2) / zoom - this.selectedSize / 2;
+							posY = (-ty + rect.height / 2) / zoom - this.selectedSize / 2;
+						}
 					}
 				}
+
+				// Финальная проверка на NaN
+				if (!isFinite(posX)) posX = 0;
+				if (!isFinite(posY)) posY = 0;
 
 				const newNode: CanvasNode = {
 					id: this.generateId(),

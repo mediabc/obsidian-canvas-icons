@@ -387,7 +387,7 @@ var IconPickerModal = class extends import_obsidian.Modal {
     }
   }
   insertIcon(iconId) {
-    var _a, _b;
+    var _a, _b, _c;
     const tempDiv = document.createElement("div");
     (0, import_obsidian.setIcon)(tempDiv, iconId);
     const svg = tempDiv.querySelector("svg");
@@ -418,16 +418,28 @@ var IconPickerModal = class extends import_obsidian.Modal {
           new import_obsidian.Notice("Node not found");
         }
       } else {
-        let posX = (_a = this.x) != null ? _a : this.canvas.x;
-        let posY = (_b = this.y) != null ? _b : this.canvas.y;
-        if (this.x === void 0 || this.y === void 0) {
+        let posX = 0;
+        let posY = 0;
+        if (this.x !== void 0 && this.y !== void 0) {
+          posX = this.x;
+          posY = this.y;
+        } else {
           const canvasView = this.plugin.getActiveCanvasView();
           if (canvasView) {
             const rect = canvasView.contentEl.getBoundingClientRect();
-            posX = (-this.canvas.tx + rect.width / 2) / this.canvas.tZoom - this.selectedSize / 2;
-            posY = (-this.canvas.ty + rect.height / 2) / this.canvas.tZoom - this.selectedSize / 2;
+            const tx = (_a = this.canvas.tx) != null ? _a : 0;
+            const ty = (_b = this.canvas.ty) != null ? _b : 0;
+            const zoom = (_c = this.canvas.tZoom) != null ? _c : 1;
+            if (isFinite(tx) && isFinite(ty) && isFinite(zoom) && zoom !== 0) {
+              posX = (-tx + rect.width / 2) / zoom - this.selectedSize / 2;
+              posY = (-ty + rect.height / 2) / zoom - this.selectedSize / 2;
+            }
           }
         }
+        if (!isFinite(posX))
+          posX = 0;
+        if (!isFinite(posY))
+          posY = 0;
         const newNode = {
           id: this.generateId(),
           type: "text",

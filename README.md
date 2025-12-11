@@ -2,7 +2,7 @@
 
 An Obsidian plugin that allows you to add icons directly to your Canvas.
 
-![Canvas Icons Demo](https://raw.githubusercontent.com/your-username/obsidian-canvas-icons/main/demo.gif)
+![Canvas Demo](./demo-canvas.png)
 
 ## Features
 
@@ -39,6 +39,8 @@ An Obsidian plugin that allows you to add icons directly to your Canvas.
 2. Click the **smile icon** (😊+) in the Canvas toolbar
 3. Search or browse for an icon
 4. Click on the icon to add it to the canvas
+
+![Icon Picker Modal](./canvas-modal.png)
 
 ### Changing Icon Color
 
