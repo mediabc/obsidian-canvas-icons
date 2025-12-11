@@ -1,0 +1,11 @@
+{
+	"id": "canvas-icons",
+	"name": "Canvas Icons",
+	"version": "1.0.0",
+	"minAppVersion": "1.4.0",
+	"description": "Add icons from Lucide icon library directly to your Canvas",
+	"author": "Canvas Icons Plugin",
+	"authorUrl": "https://github.com/",
+	"isDesktopOnly": false
+}
+

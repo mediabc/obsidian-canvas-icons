@@ -1,0 +1,282 @@
+/* Canvas Icons Plugin Styles */
+
+.canvas-icons-modal {
+	max-width: 700px;
+	max-height: 80vh;
+}
+
+.canvas-icons-modal .modal-content {
+	padding: 20px;
+}
+
+.canvas-icons-modal h2 {
+	margin: 0 0 16px 0;
+	font-size: 1.5em;
+	font-weight: 600;
+	color: var(--text-normal);
+}
+
+.canvas-icons-modal h3 {
+	margin: 16px 0 8px 0;
+	font-size: 0.9em;
+	font-weight: 500;
+	color: var(--text-muted);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+/* Controls */
+.canvas-icons-controls {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin-bottom: 16px;
+	padding-bottom: 16px;
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.canvas-icons-search {
+	width: 100%;
+}
+
+.canvas-icons-search-input {
+	width: 100%;
+	padding: 10px 14px;
+	font-size: 14px;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 8px;
+	background: var(--background-primary);
+	color: var(--text-normal);
+	transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.canvas-icons-search-input:focus {
+	outline: none;
+	border-color: var(--interactive-accent);
+	box-shadow: 0 0 0 2px var(--interactive-accent-hover);
+}
+
+.canvas-icons-search-input::placeholder {
+	color: var(--text-faint);
+}
+
+/* Settings row */
+.canvas-icons-settings {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	align-items: center;
+}
+
+.canvas-icons-size {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.canvas-icons-size label {
+	font-size: 13px;
+	color: var(--text-muted);
+	font-weight: 500;
+}
+
+.canvas-icons-size-input {
+	width: 120px;
+	accent-color: var(--interactive-accent);
+}
+
+.canvas-icons-size-label {
+	font-size: 12px;
+	color: var(--text-muted);
+	min-width: 45px;
+}
+
+/* Color hint */
+.canvas-icons-color-hint {
+	display: flex;
+	align-items: center;
+}
+
+.canvas-icons-hint-text {
+	font-size: 12px;
+	color: var(--text-faint);
+	font-style: italic;
+}
+
+/* Sections */
+.canvas-icons-section {
+	margin-bottom: 16px;
+}
+
+.canvas-icons-section-all {
+	max-height: 300px;
+	overflow-y: auto;
+	padding-right: 8px;
+}
+
+/* Icon grid */
+.canvas-icons-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+	gap: 6px;
+}
+
+.canvas-icons-grid-recent,
+.canvas-icons-grid-popular {
+	grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+}
+
+/* Icon button */
+.canvas-icons-icon-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	padding: 8px;
+	border: 1px solid transparent;
+	border-radius: 8px;
+	background: var(--background-secondary);
+	cursor: pointer;
+	transition: all 0.15s ease;
+}
+
+.canvas-icons-icon-btn:hover {
+	background: var(--background-modifier-hover);
+	border-color: var(--background-modifier-border);
+	transform: scale(1.08);
+}
+
+.canvas-icons-icon-btn:active {
+	transform: scale(0.95);
+}
+
+.canvas-icons-icon-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+}
+
+.canvas-icons-icon-wrapper svg {
+	width: 100%;
+	height: 100%;
+}
+
+/* Messages */
+.canvas-icons-more,
+.canvas-icons-empty {
+	grid-column: 1 / -1;
+	padding: 16px;
+	text-align: center;
+	color: var(--text-muted);
+	font-size: 13px;
+}
+
+.canvas-icons-empty {
+	padding: 32px;
+}
+
+/* Scrollbar */
+.canvas-icons-section-all::-webkit-scrollbar {
+	width: 6px;
+}
+
+.canvas-icons-section-all::-webkit-scrollbar-track {
+	background: var(--background-primary);
+	border-radius: 3px;
+}
+
+.canvas-icons-section-all::-webkit-scrollbar-thumb {
+	background: var(--background-modifier-border);
+	border-radius: 3px;
+}
+
+.canvas-icons-section-all::-webkit-scrollbar-thumb:hover {
+	background: var(--text-faint);
+}
+
+/* Context menu item */
+.menu-item.canvas-icons-menu-item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+/* Toolbar button - наследует стили от canvas-card-menu-button */
+.canvas-icons-toolbar-btn {
+	/* Дополнительные стили не нужны - наследуется от canvas-card-menu-button */
+}
+
+/* Canvas icon nodes - container styling */
+.canvas-icon-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 8px;
+	box-sizing: border-box;
+}
+
+.canvas-icon-container svg {
+	width: 100%;
+	height: 100%;
+	flex-shrink: 0;
+}
+
+/* По умолчанию - цвет текста (SVG использует stroke="currentColor") */
+.canvas-node .canvas-icon-container {
+	color: var(--text-normal);
+}
+
+/* Иконки с цветом Canvas - используем переменную --canvas-color через color */
+.canvas-node[class*="mod-canvas-color"] .canvas-icon-container {
+	color: rgb(var(--canvas-color));
+}
+
+/* Узлы с иконками БЕЗ цвета - убираем фон и border */
+.canvas-node:has(.canvas-icon-container):not([class*="mod-canvas-color"]) .canvas-node-container {
+	background: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
+}
+
+/* Узлы с иконками С цветом - прозрачный фон, но border остаётся */
+.canvas-node:has(.canvas-icon-container)[class*="mod-canvas-color"] .canvas-node-container {
+	background: transparent !important;
+	box-shadow: none !important;
+	/* border наследуется от Canvas - не трогаем */
+}
+.canvas-node:has(.canvas-icon-container)[class*="mod-canvas-color"] .canvas-node-content {
+	background: transparent !important;
+}
+
+/* При выделении показываем рамку */
+.canvas-node:has(.canvas-icon-container).is-focused .canvas-node-container {
+	border: 2px solid var(--interactive-accent) !important;
+}
+
+/* Убираем padding */
+.canvas-node:has(.canvas-icon-container) .canvas-node-content {
+	padding: 0 !important;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+	.canvas-icons-settings {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	
+	.canvas-icons-grid {
+		grid-template-columns: repeat(auto-fill, minmax(38px, 1fr));
+	}
+	
+	.canvas-icons-icon-btn {
+		width: 38px;
+		height: 38px;
+	}
+}
+
